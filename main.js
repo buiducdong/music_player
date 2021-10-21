@@ -52,6 +52,7 @@ tabPersonSong.forEach((tab, index) => {
 	const audio = $('#audio');
 	const player = $('.player-bar__actions');
 	const playBtn = $('.toggle-play');
+	const progress = $('#progress');
 const app = {  
 	currentIndex: 0,
 	isPlaying:false,
@@ -152,18 +153,37 @@ const app = {
 		// xu ly khi click play icon
 		playBtn.onclick = function() {
 			if(_this.isPlaying) {
-				_this.isPlaying = false;
 				audio.pause();
-				player.classList.remove('playing');
 			} else {
-
-				_this.isPlaying = true;
 				audio.play();
-				player.classList.add('playing');
+			}
+		}
+		//song duoc chay
+		audio.onplay = function() {
+			_this.isPlaying = true;
+			player.classList.add('playing');
+		}
+
+		//pauser song
+		audio.onpause = function() {
+			_this.isPlaying = false;
+			player.classList.remove('playing');
+		}
+
+		//xu ly khi bai hat chay
+		audio.ontimeupdate = function() {
+			if(audio.duration) {
+				const progressPersent = Math.floor(this.currentTime / this.duration * 100);
+				progress.value = progressPersent;
 			}
 		}
 
+		//xu ly khi tua
+		progress.onchange = function(e) {
+			audio.currentTime = audio.duration / 100 * e.target.value;
+		}
 
+		
 	},
 	loadCurrenSong: function() {
 

@@ -528,7 +528,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-right: -1rem;
+	margin-right: -1.5rem;
 }
 
 .player-bar__actions .pause-icon {
@@ -545,12 +545,22 @@
 
 .player-bar__actions .icon__bar {
     border-radius: 50%;
-	margin-right: .5rem;
-    padding: 1rem;
+	margin-right: 1.5rem;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.player-bar__actions .icon__bar:hover {
+    background-color: gainsboro;
+}
+
+.toggle-play:hover {
+    background-color: none;
+    color: rebeccapurple;
 }
 
 .icon__bar i {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .player-controls-right {
