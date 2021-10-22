@@ -19,7 +19,7 @@
     left: 0;
     height: 100%;
     width: var(--width-sidebar);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     transition: all .1s ease;
     z-index: 100;
@@ -31,13 +31,16 @@
 .app__sidebar-logo {
     height: var(--header-height);
     display: flex;
-    flex-shrink: 0;
+    align-items: center;
 }
 .app__sidebar-logo > img {
-    height:calc(var(--header-height) - 15px) ;
+    height:calc(var(--header-height) - 2.5rem) ;
 }
 .app__sidebar-logo .main-logo {
+    margin-left: 2rem;
+    padding: 6px;
     display: block;
+    width: 14rem;
 }
 .app__sidebar-logo .small-logo {
     display: none;
@@ -70,9 +73,9 @@
     margin-bottom: 5rem;
     padding-top: 5px;
 }
-.nav__list-scroll:hover::-webkit-scrollbar  {
-    display: block;
-    width: 6px;
+.nav__list-scroll:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
+    background: #888;
 }
 .nav__list-item:hover,
 .nav__list-libarary-item:hover{
@@ -83,17 +86,44 @@
     height: 4rem;
     line-height: 4rem;
     cursor: pointer;
-    padding-left: 3rem;
+    padding-left: 2.5rem;
     color: var(--text-color);
     display: flex;
     align-items: center;
 }
+
 .nav__list-item a i,
 .nav__list-libarary-item a i{
     margin-right: 1rem;
     font-size: 2.5rem;
     font-weight: 200;
 }
+
+.login--sidebar {
+    margin: 2rem 1.5rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #7200a1;
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+}
+
+.login--sidebar-btn {
+    background-color: transparent;
+    padding: .5rem 4rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    outline-style: none;
+    outline-color: #fff;
+    outline: #fff;
+    font-weight: 500;
+}
+
 .nav__tab-list::after{
     content: "";
     border-top: 1px solid var(--border-primary);
@@ -211,20 +241,26 @@
         justify-content: center;
         transition: all .1s ease;
     }
+
+    .app__sidebar .app__sidebar-logo {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
     .app__sidebar .app__sidebar-logo .main-logo {
         display: none;
+        margin-left: 1.6rem;
     }
+
     .app__sidebar .app__sidebar-logo .small-logo {
         display: block;
+        margin-left: 1.2rem;
     }
+
     .app__header {
         left: var(--width-sidebarSmall);
         right: 0;
-    }
-    .app__sidebar .app__sidebar-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     .app__sidebar .sidebar-bottom{
         display: flex;
@@ -243,9 +279,15 @@
         cursor: pointer;
         font-size: 4rem;
     }
+
+    .login--sidebar {
+        display: none;
+    }
+
     .nav__list-item.active::before{
         display: none;
     }
+
     /*when toogle sidebar */
     .app__sidebar.change {
         width: var(--width-sidebar);
@@ -531,15 +573,15 @@
 	margin-right: -1.5rem;
 }
 
-.player-bar__actions .pause-icon {
+.player-bar__actions #pause-icon {
     display: none;
 }
 
-.player-bar__actions.playing .pause-icon{
+.player-bar__actions.playing #pause-icon{
     display: block;
 }
 
-.player-bar__actions.playing .play-icon{
+.player-bar__actions.playing #play-icon{
     display: none;
 }
 
@@ -550,18 +592,23 @@
     cursor: pointer;
 }
 
-.player-bar__actions .icon__bar:hover {
+.player-bar__actions .icon__bar:not(:nth-child(3)):hover {
     background-color: gainsboro;
 }
 
 .toggle-play:hover {
-    background-color: none;
+    background-color: transparent;
     color: rebeccapurple;
 }
 
-.icon__bar i {
-    font-size: 3.5rem;
+.icon__bar ion-icon {
+    font-size: 2.5rem;
 }
+
+.toggle-play ion-icon {
+    font-size: 4rem;
+}
+
 
 .player-controls-right {
 	width: 30%;

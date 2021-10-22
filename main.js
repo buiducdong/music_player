@@ -46,80 +46,23 @@ tabPersonSong.forEach((tab, index) => {
 });
 
 // handle playlist
-	const nameSong = $('.song-name');
-	const nameSinger = $('.singer-name');
-	const songImg = $('.song-img');
-	const audio = $('#audio');
-	const player = $('.player-bar__actions');
-	const playBtn = $('.toggle-play');
-	const progress = $('#progress');
+const nameSong = $('.song-name');
+const nameSinger = $('.singer-name');
+const songImg = $('.song-img');
+const audio = $('#audio');
+const player = $('.player-bar__actions');
+const playBtn = $('.toggle-play');
+const progress = $('#progress');
+const nextSongBtn = $('.next-icon');
+const prevSongBtn = $('.prev-icon');
+
+
 const app = {  
 	currentIndex: 0,
 	isPlaying:false,
-	songs: [
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-			{
-					name: 'song2',
-					singer: 'singer2',
-					path: './assets/music/listsong1/song2.mp3',
-					image: './assets/image/music/listimg1/song2.jpg',
-			},
-			{
-					name: 'song3',
-					singer: 'singer3',
-					path: './assets/music/listsong1/song3.mp3',
-					image: './assets/image/music/listimg1/song3.jpg',
-			},
-			{
-					name: 'song4',
-					singer: 'singer4',
-					path: './assets/music/listsong1/song4.mp3',
-					image: './assets/image/music/listimg1/song4.jpg',
-			},
-			{
-					name: 'song5',
-					singer: 'singer5',
-					path: './assets/music/listsong1/song5.mp3',
-					image: './assets/image/music/listimg1/song5.jpg',
-			},
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-			{
-					name: 'song1',
-					singer: 'singer1',
-					path: './assets/music/listsong1/song1.mp3',
-					image: './assets/image/music/listimg1/song1.jpg',
-			},
-	],
+	playlist: JSON.parse(localStorage.getItem(PLAYLIST_STORAGE_KEY)),
 	render: function() {
-			const htmls = this.songs.map(song => {
+			const htmls = this.playlist.map(song => {
 				return `
 					<li class="song--item">
 						<div class="song--item--section">
@@ -144,7 +87,7 @@ const app = {
 	defineProperties: function() {
 		Object.defineProperty(this, "currentSong", {
 			get: function() {
-				return this.songs[this.currentIndex];
+				return this.playlist[this.currentIndex];
 			}
 		})
 	},
@@ -183,6 +126,17 @@ const app = {
 			audio.currentTime = audio.duration / 100 * e.target.value;
 		}
 
+		//xu ly khi next bai hat
+		nextSongBtn.onclick = function() {
+			_this.nextSong();
+			audio.play();
+		}
+
+		//xu ly khi prev bai hat
+		prevSongBtn.onclick = function() {
+			_this.prevSong();
+			audio.play();
+		}
 		
 	},
 	loadCurrenSong: function() {
@@ -191,6 +145,20 @@ const app = {
 		nameSinger.textContent = this.currentSong.singer;
 		songImg.src = this.currentSong.image;
 		audio.src = this.currentSong.path;
+	},
+	nextSong: function() {
+		this.currentIndex++;
+		if(this.currentIndex >= this.playlist.length) {
+			this.currentIndex = 0;
+		}
+		this.loadCurrenSong();
+	},
+	prevSong: function() {
+		this.currentIndex--;
+		if(this.currentIndex <= 0) {
+			this.currentIndex = this.playlist.length - 1;
+		}
+		this.loadCurrenSong();
 	},
 	start: function() {
 		//Dinh nghia thuocj tinh cho object

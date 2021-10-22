@@ -34,6 +34,7 @@ body {
     /* background: var(--layout-bg); */
     margin: 0;
     padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 ul {
@@ -47,7 +48,7 @@ ul li a {
     text-decoration: none;
 }
 ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
 }
 ::-webkit-scrollbar {
     width: 6px;
@@ -58,5 +59,6 @@ ul li a {
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #888;
+    opacity: 0;
+    background: transparent;
 }

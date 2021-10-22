@@ -5,7 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nhạc cá nhân | Nge tải nhạc chất lượng cao trên desktop, mobile và TV</title>
+    
+    <!-- google font inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- boxicon -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ion icon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- css file -->
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
@@ -22,13 +32,13 @@
                 <li class="nav__list-item active">
                     <a href="#">
                         <i class='bx bx-speaker'></i>
-                        <span class="link-name">Ca nhan</span>
+                        <span class="link-name">Cá nhân</span>
                     </a>
                 </li>
                 <li class="nav__list-item">
                     <a href="#">
                         <i class='bx bx-disc'></i>
-                        <span class="link-name">Kham pha</span>
+                        <span class="link-name">Khám phá</span>
                     </a>
                 </li>
                 <li class="nav__list-item">
@@ -46,7 +56,7 @@
                 <li class="nav__list-item">
                     <a href="#">
                         <i class='bx bxs-food-menu'></i>
-                        <span class="link-name">Theo doi</span>
+                        <span class="link-name">Theo dõi</span>
                     </a>
                 </li>
             </ul>
@@ -57,87 +67,33 @@
                 <li class="nav__list-libarary-item">
                     <a href="#">
                         <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
+                        <span class="link-name">Nhạc mới</span>
                     </a>
                 </li>
                 <li class="nav__list-libarary-item">
                     <a href="#">
                         <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
+                        <span class="link-name">Thể loại</span>
                     </a>
                 </li>
                 <li class="nav__list-libarary-item">
                     <a href="#">
                         <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
+                        <span class="link-name">Top 100</span>
                     </a>
                 </li>
                 <li class="nav__list-libarary-item">
                     <a href="#">
                         <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
+                        <span class="link-name">MV</span>
                     </a>
                 </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
-                <li class="nav__list-libarary-item">
-                    <a href="#">
-                        <i class='bx bx-speaker'></i>
-                        <span class="link-name">Kham pha</span>
-                    </a>
-                </li>
+                <div class="login--sidebar">
+                  <p>Đăng nhập để khám phá những 
+                    playlist dành riêng cho chính bạn.
+                  </p>
+                  <button class="login--sidebar-btn">ĐĂNG NHẬP</button>
+                </div>
             </ul>
         </div>
         <div class="sidebar-bottom">
@@ -403,20 +359,20 @@
     <div class="player-controls__player-bar ">
       <div class="player-bar__actions">
         <div class="icon__bar">
-          <i class='bx bx-repost'></i>
+          <ion-icon name="shuffle-outline"></ion-icon>
         </div>
-        <div class="icon__bar">
-          <i class='bx bx-skip-previous' ></i>
+        <div class="icon__bar prev-icon">
+          <ion-icon name="play-skip-back-outline"></ion-icon>
         </div>
         <div class="icon__bar toggle-play">
-          <i class='bx bx-play-circle play-icon'></i>
-          <i class='bx bx-pause-circle pause-icon'></i>
+          <ion-icon name="play-circle-outline" id="play-icon"></ion-icon>
+          <ion-icon name="pause-circle-outline" id="pause-icon"></ion-icon>
+        </div>
+        <div class="icon__bar next-icon">
+          <ion-icon name="play-skip-forward-outline"></ion-icon>
         </div>
         <div class="icon__bar">
-          <i class='bx bx-skip-next'></i>
-        </div>
-        <div class="icon__bar">
-          <i class='bx bx-repost'></i>
+          <ion-icon name="repeat-outline"></ion-icon>
         </div>
       </div>
       <div class="range">
@@ -430,7 +386,10 @@
     </div>
   </div>
     
-  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <!-- locastorage -->
+  <script src="./data/playlist.js"></script>
+
+  <!-- main js file -->
   <script src="./main.js"></script>
 </body>
 </html>
