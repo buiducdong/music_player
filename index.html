@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhạc cá nhân | Nge tải nhạc chất lượng cao trên desktop, mobile và TV</title>
+    <link rel="icon" href="./assets/image/favicon/icon_zing_mp3.png" type="image/x-icon" />
+    <title>Zing MP3 | Nge tải nhạc chất lượng cao trên desktop, mobile và TV</title>
     
     <!-- google font inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,6 +111,7 @@
             <h3>Tam amo</h3>
             <h5>dat</h5>
         </div>
+
         <div class="app__container tab--person active">
           <div class="tab--person--banner">
             <div class="tab--person--banner--avatar">
@@ -130,7 +132,9 @@
             <li class="tab__song-item">MV</li>
             <li class="tab__song-item">TẢI LÊN</li>
           </ul>
-          <div class="tab--person--songs active">
+
+          <!-- tab personsong overview -->
+          <div class="tab--person--songs overview active">
             <div class="tab--person--song__header">
               <div class="tab--person--song__header--title">
                 <h3>Bai HAT</h3>
@@ -146,24 +150,8 @@
                 <h1>tong quan</h1>
               </div>
               <ul class="song-list">
-
-                <!-- render from js -->
-                <!-- <li class="song--item">
-                  <div class="song--item--section">
-                    <div class="song--item__detail">
-                      <img src="./assets/image/music/listimg1/song1.jpg" alt="song1" class="song--item__img">
-                      <div class="song--item--title">
-                        <h3 class="song__name">name song 1</h3>
-                        <p class="song__singer">singer song 1</p>
-                      </div>
-                    </div>
-                    <p class="song--item__time">04:35</p>
-                  </div>
-                  <div class="song--item__icon">
-                    <p>heart</p>
-                    <p>...</p>
-                  </div>
-                </li> -->
+                <!-- render li element from js -->
+                
               </ul>
             </div>
           </div>
@@ -187,6 +175,8 @@
               </div>
             </div>
           </div>
+
+          <!-- tab personsong song -->
           <div class="tab--person--songs">
             <div class="tab--person--song__header">
               <div class="tab--person--song__header--title">
@@ -207,6 +197,8 @@
               </div>
             </div>
           </div>
+
+          <!-- tabperson song playllist -->
           <div class="tab--person--songs">
             <div class="tab--person--song__header">
               <div class="tab--person--song__header--title">
@@ -227,6 +219,8 @@
               </div>
             </div>
           </div>
+
+          <!-- tab personsong album -->
           <div class="tab--person--songs">
             <div class="tab--person--song__header">
               <div class="tab--person--song__header--title">
@@ -263,20 +257,7 @@
                 <h1>nTai len</h1>
               </div>
               <ul class="song-list">
-                <li class="song--item">
-                  <div class="song--item--section">
-                    <img src="./assets/image/music/listimg1/song1.jpg" alt="song1" class="song--item__img">
-                    <div class="song--item__detail">
-                      <h2 class="song__name">name song 1</h2>
-                      <p class="song__singer">singer song 1</p>
-                    </div>
-                    <p class="song--item__time">04:35</p>
-                  </div>
-                  <div class="song--item__icon">
-                    <p>heart</p>
-                    <p>...</p>
-                  </div>
-                </li>
+
               </ul>
             </div>
           </div>
@@ -358,7 +339,7 @@
     </div>
     <div class="player-controls__player-bar ">
       <div class="player-bar__actions">
-        <div class="icon__bar">
+        <div class="icon__bar random-icon">
           <ion-icon name="shuffle-outline"></ion-icon>
         </div>
         <div class="icon__bar prev-icon">
@@ -371,16 +352,21 @@
         <div class="icon__bar next-icon">
           <ion-icon name="play-skip-forward-outline"></ion-icon>
         </div>
-        <div class="icon__bar">
+        <div class="icon__bar repeat-icon">
           <ion-icon name="repeat-outline"></ion-icon>
         </div>
       </div>
       <div class="range">
-        <span class="time-left">1:55</span>
+        <span class="time-left">00:00</span>
         <input type="range" class="progress" value="0" step="1" min="0" max="100" id="progress">
-        <span class="time-right">4:55</span>
-        <audio id="audio" src=""></audio>
+        <div class="progress-track">
+          <div style="width: 0;" class="progress-track__update">
+
+          </div>
+        </div>
+        <span class="time-right">00:00</span>
       </div>
+      <audio id="audio" src=""></audio>
     </div>
     <div class="player-controls-right">
     </div>

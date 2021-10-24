@@ -1,4 +1,5 @@
 :root {
+    --bg-content-color: rgba(255, 255, 255, 0.1);
     --layout-bg: #37075d;
     --black-color: #000;
     --white-color: #fff;
@@ -11,6 +12,8 @@
     --sidebar-color: #411465;
     --border-primary:#dadada;
     --smoth: all .3s ease-in;
+    --border-primary: rgba(255, 255, 255, 0.1);
+    --navigation-text: #dadada;
 }
 
 * {
