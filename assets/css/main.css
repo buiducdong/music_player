@@ -48,10 +48,14 @@
     padding-bottom: 1rem;
 }
 .nav__list-item.active {
-    color: #fff;
     background-color: #542c75;
     position: relative;
 }
+
+.nav__list-item.active a {
+    color: #fff;
+}
+
 .nav__list-item.active::before{
     content: "";
     border-right: 3px solid rgb(226, 27, 61);
@@ -75,8 +79,9 @@
     opacity: 1;
     background: #888;
 }
-.nav__list-item:hover,
-.nav__list-libarary-item:hover{
+.nav__list-item:hover a,
+.nav__list-libarary-item:hover a{
+    transition: all .2s ease;
     color: #fff;
 }
 .nav__list-item a,
@@ -424,6 +429,11 @@
 	align-items: center;
 }
 
+.tab--person--song__header--title i {
+    font-size: 3rem;
+    color: #fff;
+}
+
 .tab--person--song__header--right {
 	display: flex;
 	margin-left: -2rem;
@@ -431,10 +441,20 @@
 }
 
 .tab--person--song__header--right p {
-	padding: .5rem 2rem;
+	padding: .2rem 1.5rem;
 	border-radius: 2rem;
 	margin-left: 2rem;
 	background-color: rgba(253, 253, 253, 0.8);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.tab--person--song__header--right p i {
+    margin-right: .5rem;
+    font-size: 2.5rem;
+    color: #fff;
 }
 
 .song__animate-section {
@@ -470,8 +490,7 @@
 }
 
 .song--item.active {
-    background-color: #888;
-    opacity: .5;
+    background-color: rgba(158, 156, 156, .5);
 }
 
 .song--item__detail .song--item__thumd:hover {
@@ -500,8 +519,7 @@
 }
 
 .song--item:hover {
-    background-color: rgb(158, 156, 156);
-    opacity: .4;
+    background-color: rgba(158, 156, 156, .5);
 }
 
 .song--item:hover .actions__icons .play {
@@ -574,19 +592,20 @@
 	display: flex;
 	justify-content: space-between;
 	font-size: 1.6rem;
+    padding: 0 1rem;
 }
 
 .player-controls-lef {
 	display: flex;
 	align-items: center;
-	width: 30%;
+	width: 100%;
 }
 
 .media {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	width: 100%;
+    padding: 0 4rem 0 2rem;
 }
 
 .media img {
@@ -600,7 +619,7 @@
 	height: 100%;
 	justify-content: center;
 	margin: 0 1rem;
-	flex-grow: 1;
+    overflow: hidden;
 }
 
 .media-content h4,
@@ -608,12 +627,21 @@
 	margin: 0;
 }
 
+.media-right i {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.media-right i:hover {
+    background-color: #888;
+}
+
 .player-controls__player-bar {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-    padding: 0 10rem;
 	justify-content: space-evenly;
 }
 
@@ -750,7 +778,7 @@
 
 /* player right */
 .player-controls-right {
-	width: 30%;
+	width: 100%;
 	background-color: red;
 }
 

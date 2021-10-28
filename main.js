@@ -61,11 +61,20 @@ const listSong = $('.song-list');
 const progressTrackUpdate = $('.progress-track__update');
 const durationSong = $('.time-right');
 const currentDurationSong = $('.time-left');
+const cdThumd = $('.media-left');
+
+const PLAYER_STORAGE_KEY = 'player';
+
 const app = {  
 	currentIndex: 0,
 	isPlaying:false,
 	isRandom:false,
 	isRepeat:false,
+	config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
+	setConfig: function(key, value) {
+		this.config[key] = value;
+		localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
+	},
 	duration:["03:03", "03:18", "04:34", "04:21", "03:24", "06:05", "03:56", "03:22", "03:45", "04:15"],
 	playlist: JSON.parse(localStorage.getItem(PLAYLIST_STORAGE_KEY) || `[]`),
 	render: function() {
@@ -89,8 +98,8 @@ const app = {
 							<p class="song--item__time">${this.duration[index]}</p>
 						</div>
 						<div class="song--item__icon">
-							<p>heart</p>
-							<p>...</p>
+							<i class='bx bx-heart heart' style="font-size: 2rem;"></i>
+							<i class='bx bx-dots-horizontal-rounded option' style="font-size: 2rem;"></i>
 						</div>
 					</li>
 				`
@@ -104,9 +113,22 @@ const app = {
 			}
 		})
 	},
+
+	// su ly cac su kien
 	handleEvent: function() {
 		const _this = this;
 		const songItem = $$('.song--item');
+
+		//xu ly cdthumd quay
+		const cdThumdAnimation = cdThumd.animate([
+			{ transform: "rotate(360deg"}
+		], {
+			duration: 10000,
+			iterations: Infinity
+		})
+
+		cdThumdAnimation.pause();
+
 		// xu ly khi click play icon
 		playBtn.onclick = function() {
 			if(_this.isPlaying) {
@@ -118,21 +140,23 @@ const app = {
 		//song duoc chay
 		audio.onplay = function() {
 			_this.isPlaying = true;
-			const songPlayings = Array.from($$('.tab--person--songs.overview .song--item.active'));
+			const songPlaying = $('.tab--person--songs.overview .song--item.active');
 			player.classList.add('playing');
-			songPlayings.forEach(songPlaying => {
-				songPlaying.classList.add('playing')
-			})
+			cdThumdAnimation.play();
+
+			if($('.tab--person--songs.overview .song--item.playing')) {
+				$('.tab--person--songs.overview .song--item.playing').classList.remove('playing');
+			}
+			songPlaying.classList.add('playing')
 		}
 
 		//pauser song
 		audio.onpause = function() {
-			const songPlayings = Array.from($$('.tab--person--songs.overview .song--item.active'));
+			const songPlaying = $('.tab--person--songs.overview .song--item.active.playing');
 			_this.isPlaying = false;
 			player.classList.remove('playing');
-			songPlayings.forEach(songPlaying => {
+			cdThumdAnimation.pause();
 				songPlaying.classList.remove('playing')
-			})
 		}
 
 		//xu ly khi bai hat chay
@@ -183,6 +207,7 @@ const app = {
 			const songItem = $$('.song--item');
 			$('.song--item.active').classList.remove('active')
 			songItem[_this.currentIndex].classList.add('active')
+
 		}
 
 		//xu ly khi prev bai hat
@@ -199,11 +224,16 @@ const app = {
 			const songItem = $$('.song--item');
 			$('.song--item.active').classList.remove('active')
 			songItem[_this.currentIndex].classList.add('active')
+
+			//remove class playing cua baif truowc
+			const songPlaying = $('.tab--person--songs.overview .song--item.playing');
+			songPlaying.classList.remove('playing')
 		}
 
 		//xu ly khi bat/tat button random
 		randomSongBtn.onclick = function() {
 			_this.isRandom = !_this.isRandom
+			_this.setConfig('isRandom', _this.isRandom);
 			this.classList.toggle('active', _this.isRandom);
 			_this.randomSong();
 		}
@@ -211,7 +241,8 @@ const app = {
 		//xu ly khi bat button repeat
 		repeatSongBtn.onclick = function() {
 			_this.isRepeat = !_this.isRepeat
-				this.classList.toggle('active', _this.isRepeat);
+			_this.setConfig("isRepeat", _this.isRepeat);
+			this.classList.toggle('active', _this.isRepeat);
 		}
 
 		//xu ly khi audio ended
@@ -252,6 +283,11 @@ const app = {
 		nameSinger.textContent = this.currentSong.singer;
 		songImg.src = this.currentSong.image;
 		audio.src = this.currentSong.path;
+		durationSong.textContent = this.duration[this.currentIndex];
+	},
+	loadConfig: function() {
+		this.isRandom = this.config.isRandom;
+		this.isRepeat = this.config.isRepeat;
 	},
 	nextSong: function() {
 		this.currentIndex++;
@@ -276,6 +312,9 @@ const app = {
 		this.currentIndex = newCurrenIndex;
 	},
 	start: function() {
+		//load cau hinhf
+		this.loadConfig();
+
 		//Dinh nghia thuocj tinh cho object
 		this.defineProperties();
 
@@ -287,6 +326,10 @@ const app = {
 
 		//render playlist
 		this.render();
+
+		//hien thi trang thai cua playerButton repeat, random
+		randomSongBtn.classList.toggle('active', this.isRandom);
+		repeatSongBtn.classList.toggle('active', this.isRepeat);
 	}
 
 }
